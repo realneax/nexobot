@@ -74,7 +74,7 @@ client.on("message", async message => {
       .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
     message.channel.send({embed:{
         color: 0x00f469,
-        description: `${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`
+        description: `**${member.user.tag}** has been kicked by **${message.author.tag}** because: ${reason}`
     }});
 
   }
@@ -123,7 +123,7 @@ client.on("message", async message => {
       .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
     message.channel.send({embed:{
         color: 0x00f469,
-        description: `${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`
+        description: `**${member.user.tag}** has been banned by **${message.author.tag}** because: ${reason}`
     }});
   }
 
