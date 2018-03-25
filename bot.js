@@ -61,7 +61,7 @@ client.on("message", async message => {
     if(!args[2]) return message.reply("Please ask a full quesition");
     let replies = ["Yes", "No", "I don't know", "Ask later again"];
 
-    let result = Math.floor((Math.random() * replies.lenght));
+    let result = Math.floor((Math.random() * replies.length));
     let question = args.slice(0).join(" ");
 
     let ballembed = new Discord.RichEmbed()
