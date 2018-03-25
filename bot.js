@@ -45,7 +45,7 @@ client.on("message", async message => {
   }
 
   if(command === "e") {
-    if (message.author.id !== '285887620813160450') 
+    if (message.author.id !== '285887620813160450')
     return;
     const sayMessage = args.join(" ");
 
@@ -74,7 +74,7 @@ client.on("message", async message => {
  }
 
    if(command === "a") {
-    if (message.author.id !== '285887620813160450') 
+    if (message.author.id !== '285887620813160450')
     return;
     const sayMessage = args.join(" ");
 
@@ -104,9 +104,9 @@ client.on("message", async message => {
     }});
 
   }
-    
+
   if(command === "kicka") {
-   if (message.author.id !== '285887620813160450') 
+   if (message.author.id !== '285887620813160450')
     return;
     let member = message.mentions.members.first();
     if(!member)
@@ -126,31 +126,6 @@ client.on("message", async message => {
     }});
 
   }
-
-  if(message.content.startsWith(config.prefix + "prune")){
-    if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-      return message.reply("Sorry, you don't have permissions to use this!");
-    let args = message.content.split(" ").slice(1);
-    let author = message.member;
-    let role = message.guild.roles.find('name', "MFA");
-    if(author.roles.has(role.id)){
-        if(!args[0]){
-            message.delete();
-            message.author.send("No args gives.");
-            return;
-        }
-        if(args[0] > 100){
-            message.delete();
-            message.author.send("Not more then 100.");
-            return;
-        }
-
-        message.delete();
-        message.channel.bulkDelete(args[0]);
-        message.channel.send("Succesfully deleted " + args[0] + " messages.")
-        return;
-      }
-    }
 
   if(command === "ban") {
 
@@ -173,10 +148,10 @@ client.on("message", async message => {
         description: `**${member.user.tag}** has been banned by **${message.author.tag}** because: ${reason}`
     }});
   }
-    
+
    if(command === "bana") {
 
-if (message.author.id !== '285887620813160450') 
+if (message.author.id !== '285887620813160450')
     return;
     let member = message.mentions.members.first();
     if(!member)
@@ -196,7 +171,26 @@ if (message.author.id !== '285887620813160450')
     }});
   }
 
+  if(command === "prune") {
+    async function purge() {
+      message.delete();
+
+      if (message.author.id !== '285887620813160450')
+      return;
+
+      if(isNaN(args[0])) {
+        message.channel.send('Use a number');
+        return;
+      }
+
+      const fetched = await message.delete.fetchMessage({limit: args[0]});
+      console.log(fetched.size + 'message found, deleting..');
+
+      message.channel.bulkDelete(fetched)
+        .catch(error => message.channel.send(`Error ${error}`));
+    }
+  }
+
 });
 
 client.login(process.env.BOT_TOKEN);
-
