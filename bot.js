@@ -45,8 +45,8 @@ client.on("message", async message => {
   }
 
   if(command === "e") {
-    if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-    return message.reply("Sorry, you don't have permissions to use this!");
+    if (message.author.id !== '285887620813160450') 
+    return;
     const sayMessage = args.join(" ");
 
     message.delete().catch(O_o=>{});
@@ -68,7 +68,7 @@ client.on("message", async message => {
     .setAuthor(message.author.tag)
     .setColor("#0FF469")
     .addField("Question", question)
-    .addField("Answer", result[replies]);
+    .addField("Answer", replies[result]);
 
       message.channel.send(ballembed);
  }
