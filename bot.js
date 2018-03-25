@@ -68,7 +68,7 @@ client.on("message", async message => {
     .setAuthor(message.author.tag)
     .setColor("#0FF469")
     .addField("Question", question)
-    .addField("Answer", replies[result]);
+    .addField("Answer", result[replies]);
 
       message.channel.send(ballembed);
  }
