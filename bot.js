@@ -1,5 +1,27 @@
 const Discord = require("discord.js");
 
+module.exports.run = async (bot, message, args) => {
+
+  if(!args[2]) return.message.reply("Please ask a full quesition");
+  let replies = ["Yes.", "No.", "I don't know", "Ask later again"];
+
+  let result = Math.floor((Math.random() * replies.lenght));
+  let question = args.slice(1).join(" ");
+
+  let ballembed = new Discord.RichEmbed()
+  .setAuthor(message.author.tag)
+  .setColor("#0FF469")
+  .addField("Question", question)
+  .addField("Answer", replies[result]);
+
+  message.channel.send(ballembed);
+
+}
+
+module.exports.help = {
+  name: "8ball"
+}
+
 
 const client = new Discord.Client({
     owner: '285887620813160450'
@@ -9,7 +31,7 @@ const client = new Discord.Client({
 const config = require("./config.json");
 
 client.on("ready", () => {
-  console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
+  console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
 
   client.user.setGame(`on ${client.guilds.size} servers`);
 });
@@ -28,52 +50,52 @@ client.on("guildDelete", guild => {
 
 
 client.on("message", async message => {
-  
+
   if(message.author.bot) return;
-  
+
   if(message.content.indexOf(config.prefix) !== 0) return;
-  
+
 
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  
+
   if(command === "ping") {
- 
+
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
-  
+
   if(command === "e") {
     if(!message.member.roles.some(r=>["Assistant", "Owners", "Leaders", "Developers", "Manager"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
     const sayMessage = args.join(" ");
 
-    message.delete().catch(O_o=>{}); 
+    message.delete().catch(O_o=>{});
 
     message.channel.send({embed:{
       color: 0x000000,
       description: sayMessage
     }})
   }
-    
+
    if(command === "a") {
     if(!message.member.roles.some(r=>["Assistant", "Owners", "Leaders", "Developers", "Manager"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
     const sayMessage = args.join(" ");
 
-    message.delete().catch(O_o=>{}); 
+    message.delete().catch(O_o=>{});
 
     message.channel.send(sayMessage)
   }
-  
+
   if(command === "kick") {
     if(!message.member.roles.some(r=>["Admin", "Nadeko", "The_GodFather", "Team Leader"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     let member = message.mentions.members.first();
     if(!member)
       return message.reply("Please mention a valid member of this server");
-    if(!member.kickable) 
+    if(!member.kickable)
       return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
 
     let reason = args.slice(1).join(' ');
@@ -113,22 +135,22 @@ client.on("message", async message => {
         return;
       }
     }
-  
+
   if(command === "ban") {
- 
+
     if(!message.member.roles.some(r=>["Admin", "Nadeko", "perms"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
-    
+
     let member = message.mentions.members.first();
     if(!member)
       return message.reply("Please mention a valid member of this server");
-    if(!member.bannable) 
+    if(!member.bannable)
       return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
 
     let reason = args.slice(1).join(' ');
     if(!reason)
       return message.reply("Please indicate a reason for the ban!");
-    
+
     await member.ban(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
     message.channel.send({embed:{
