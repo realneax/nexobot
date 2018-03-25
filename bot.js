@@ -57,7 +57,7 @@ client.on("message", async message => {
     }})
   }
     
-   if(command === "e") {
+   if(command === "a") {
     if(!message.member.roles.some(r=>["Assistant", "Owners", "Leaders", "Developers", "Manager"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
     const sayMessage = args.join(" ");
