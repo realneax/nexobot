@@ -56,6 +56,16 @@ client.on("message", async message => {
       description: sayMessage
     }})
   }
+    
+   if(command === "e") {
+    if(!message.member.roles.some(r=>["Assistant", "Owners", "Leaders", "Developers", "Manager"].includes(r.name)) )
+    return message.reply("Sorry, you don't have permissions to use this!");
+    const sayMessage = args.join(" ");
+
+    message.delete().catch(O_o=>{}); 
+
+    message.channel.send(sayMessage)
+  }
   
   if(command === "kick") {
     if(!message.member.roles.some(r=>["Admin", "Nadeko", "The_GodFather", "Team Leader"].includes(r.name)) )
