@@ -57,24 +57,24 @@ client.on("message", async message => {
     }})
   }
 
-  if(command === "8ball") {
+  if(message.content.startsWith("8ball") {
     if(!args[2]) return message.reply("Please ask a full quesition");
-    let replies = ["Yes.", "No.", "I don't know", "Ask later again"];
+    let replies = ["Yes", "No", "I don't know", "Ask later again"];
 
-    let results = Math.floor((Math.random() * replies.lenght));
+    let result = Math.floor((Math.random() * replies.lenght));
     let question = args.slice(0).join(" ");
 
     let ballembed = new Discord.RichEmbed()
     .setAuthor(message.author.tag)
     .setColor("#0FF469")
     .addField("Question", question)
-    .addField("Answer", replies(results));
+    .addField("Answer", replies[result]);
 
       message.channel.send(ballembed);
  }
 
    if(command === "a") {
-    if(!message.member.roles.some(r=>["Assistant", "Owners", "Leaders", "Developers", "Manager"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
     const sayMessage = args.join(" ");
 
@@ -84,7 +84,7 @@ client.on("message", async message => {
   }
 
   if(command === "kick") {
-    if(!message.member.roles.some(r=>["Admin", "Nadeko", "The_GodFather", "Team Leader"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     let member = message.mentions.members.first();
     if(!member)
@@ -106,7 +106,7 @@ client.on("message", async message => {
   }
 
   if(message.content.startsWith(config.prefix + "prune")){
-    if(!message.member.roles.some(r=>["Admin", "Team Leader"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     let args = message.content.split(" ").slice(1);
     let author = message.member;
@@ -132,7 +132,7 @@ client.on("message", async message => {
 
   if(command === "ban") {
 
-    if(!message.member.roles.some(r=>["Admin", "Nadeko", "perms"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 
     let member = message.mentions.members.first();
