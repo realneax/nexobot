@@ -154,9 +154,8 @@ client.on("message", async message => {
 
   if(command === "ban") {
 
-    if(!message.guild.member.hasPermission("BAN_MEMBERS", true)) {
-        return message.reply("You dont have permissions");
-    }
+    if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
     let member = message.mentions.members.first();
     if(!member)
       return message.reply("Please mention a valid member of this server");
