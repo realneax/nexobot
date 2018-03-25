@@ -154,7 +154,7 @@ client.on("message", async message => {
 
   if(command === "ban") {
 
-    if(message.author.hasPermission(BAN_MEMBERS, true)) {
+    if(message.author.hasPermission("BAN_MEMBERS", true)) {
         return message.reply("You dont have permissions");
     }
     let member = message.mentions.members.first();
