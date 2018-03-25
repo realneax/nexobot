@@ -154,7 +154,7 @@ client.on("message", async message => {
 
   if(command === "ban") {
 
-    if(message.author.hasPermission(BAN_MEMBERS, true);
+    if(message.author.hasPermission(BAN_MEMBERS, true))
     let member = message.mentions.members.first();
     if(!member)
       return message.reply("Please mention a valid member of this server");
