@@ -61,14 +61,14 @@ client.on("message", async message => {
     if(!args[2]) return message.reply("Please ask a full quesition");
     let replies = ["Yes.", "No.", "I don't know", "Ask later again"];
 
-    let result = Math.floor((Math.random() * replies.lenght));
-    let question = args.slice(1).join(" ");
+    let results = Math.floor((Math.random() * replies.lenght));
+    let question = args.slice(0).join(" ");
 
     let ballembed = new Discord.RichEmbed()
     .setAuthor(message.author.tag)
     .setColor("#0FF469")
     .addField("Question", question)
-    .addField("Answer", replies[result]);
+    .addField("Answer", replies[results]);
 
       message.channel.send(ballembed);
  }
