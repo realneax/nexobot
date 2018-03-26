@@ -47,7 +47,7 @@ client.on("message", async message => {
   if(command === "help") {
     message.channel.send({embed:{
       color: 0x0ff439,
-      description: "**Help site of NexoBot**\n\n**;ping (checks ur ping)\n;help (views this message)\n;e (embed message (botowner only))\n;8ball (ask a question, get a answer with yes or no)\n;kick (kicks a member)\n;ban (bans a member)\n;prune(delete certain messages(in work))"
+      description: "**Help site of NexoBot**\n\n**;ping** (checks ur ping)\n**;help** (views this message)\n**;e** (embed message (botowner only))\n**;8ball** (ask a question, get a answer with yes or no)\n**;kick** (kicks a member)\n**;ban** (bans a member)\n**;prune** (delete certain messages(in work))"**
     }})
   }
 
