@@ -63,6 +63,10 @@ client.on("message", async message => {
       description: sayMessage
     }})
   }
+    
+  if(command === "invite") {
+      message.channel.send("https://discordapp.com/oauth2/authorize?client_id=419159721509912588&scope=bot&permissions=8")
+  }
 
   if(message.content.startsWith(config.prefix+"8ball")) {
     if(!args[2]) return message.reply("Please ask a full quesition");
