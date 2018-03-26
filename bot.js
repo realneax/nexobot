@@ -41,7 +41,14 @@ client.on("message", async message => {
   if(command === "ping") {
 
     const m = await message.channel.send("Ping?");
-    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+    m.edit(`Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+  }
+
+  if(command === "help") {
+    message.channel.send({embed:{
+      color: 0x0ff439,
+      description: "**Help site of NexoBot**\n\n**;ping (checks ur ping)\n;help (views this message)\n;e (embed message (botowner only))\n;8ball (ask a question, get a answer with yes or no)\n;kick (kicks a member)\n;ban (bans a member)\n;prune(delete certain messages(in work))"
+    }})
   }
 
   if(command === "e") {
