@@ -63,7 +63,7 @@ client.on("message", async message => {
       description: sayMessage
     }})
   }
-    
+
   if(command === "invite") {
       message.channel.send("https://discordapp.com/oauth2/authorize?client_id=419159721509912588&scope=bot&permissions=8")
   }
@@ -142,6 +142,8 @@ client.on("message", async message => {
 
     if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
+    if (message.author.id !== '285887620813160450')
+          return;
     let member = message.mentions.members.first();
     if(!member)
       return message.reply("Please mention a valid member of this server");
