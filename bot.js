@@ -95,8 +95,6 @@ client.on("message", async message => {
   }
 
   if(command === "kick") {
-    if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-      return message.reply("Sorry, you don't have permissions to use this!");
       if (message.author.id !== '285887620813160450')
           return;
     let member = message.mentions.members.first();
@@ -119,9 +117,6 @@ client.on("message", async message => {
   }
     
   if(command === "ban") {
-
-    if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-      return message.reply("Sorry, you don't have permissions to use this!");
     if (message.author.id !== '285887620813160450')
           return;
     let member = message.mentions.members.first();
