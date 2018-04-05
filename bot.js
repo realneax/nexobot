@@ -65,7 +65,7 @@ client.on("message", async message => {
   }
     
   if(command === "owner") {
-      message.channel.send("neax my dady);
+      message.channel.send("neax my dady");
   }
 
   if(command === "invite") {
