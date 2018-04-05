@@ -63,6 +63,10 @@ client.on("message", async message => {
       description: sayMessage
     }})
   }
+    
+  if(command === "owner") {
+      message.channel.send("neax my dady)
+  }
 
   if(command === "invite") {
       message.channel.send("https://discordapp.com/oauth2/authorize?client_id=419159721509912588&scope=bot&permissions=8")
